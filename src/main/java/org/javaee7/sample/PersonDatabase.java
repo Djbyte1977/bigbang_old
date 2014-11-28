@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import javax.ws.rs.NotFoundException;
 
+@Startup
 @Singleton
 public class PersonDatabase {
 
@@ -14,6 +15,7 @@ public class PersonDatabase {
 
     @PostConstruct
     public void init() {
+	System.out.println ("HELLO WORLD");
         persons = Arrays.asList(
                 new Person("Penny"), 
                 new Person("Leonard"), 
