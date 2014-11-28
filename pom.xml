@@ -100,7 +100,7 @@
           </build>
         </profile>
         <profile>
-            <id>arquillian-wildfly-remote</id>
+            <id>arquillian-wildfly-managed</id>
             <build>
                 <plugins>
                     <plugin>
@@ -115,7 +115,7 @@
                         <version>2.14.1</version>
                         <configuration>
                             <systemPropertyVariables>
-                                <arquillian.launch>wildfly-remote</arquillian.launch>
+                                <arquillian.launch>wildfly-managed</arquillian.launch>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -124,8 +124,8 @@
             <dependencies>
                 <dependency>
                     <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-arquillian-container-remote</artifactId>
-                    <version>8.1.0.Final</version>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>8.2.0.Final</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
