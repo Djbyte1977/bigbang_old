@@ -4,14 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.javaee7.sample</groupId>
     <artifactId>javaee7-continuous-delivery</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>javaee7-continuous-delivery</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <!--<maven.compiler.executable>${env.OPENSHIFT_WILDFLY_DIR}usr/lib/jvm/jdk1.8.0_05/bin/javac</maven.compiler.executable>-->
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.fork>true</maven.compiler.fork>
         <version.arquillian_core>1.1.5.Final</version.arquillian_core>    
     </properties>
@@ -74,11 +73,34 @@
         </dependency>
     </dependencies>
     <profiles>
-        <profile>
-            <id>arquillian-wildfly-remote</id>
+	<profile>
+            <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+         <build>
+            <plugins>
+              <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.3</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+		<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+        		<version>2.4.2</version>
+		        <configuration>
+			          <skipTests>true</skipTests>
+		        </configuration>
+	        </plugin>
+            </plugins>
+          </build>
+        </profile>
+        <profile>
+            <id>arquillian-wildfly-remote</id>
             <build>
                 <plugins>
                     <plugin>
