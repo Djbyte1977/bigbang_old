@@ -23,7 +23,6 @@ public class PersonDatabase {
                 new Person("Howard"), 
                 new Person("Bernadette"), 
                 new Person("Raj"), 
-                new Person("Stu"), 
                 new Person("Priya"));
     }
 
